@@ -3,50 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AI Content Studio</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="topbar">
-        <div class="logo">AI CONTENT STUDIO</div>
+
+        <div class="logo">
+            AI CONTENT STUDIO
+        </div>
+
         <div class="status">
             <span class="dot"></span>
             Prototype
         </div>
+
     </header>
+
 
     <main class="container">
 
+        <!-- HERO -->
+
         <section class="hero">
-            <p class="eyebrow">YOUR AI CREATIVE ENGINE</p>
-            <h1>Create content<br><span>that actually performs.</span></h1>
+
+            <p class="eyebrow">
+                YOUR AI CREATIVE ENGINE
+            </p>
+
+            <h1>
+                Create content<br>
+                <span>that actually performs.</span>
+            </h1>
+
             <p class="description">
                 Give the AI your niche, audience and brand.
                 It will help develop trends, ideas, hooks, stories,
                 editing strategies and captions.
             </p>
+
         </section>
+
+
+        <!-- BRAND SETUP -->
 
         <section class="card">
 
-            <h2>Brand Setup</h2>
+            <h2>
+                Brand Setup
+            </h2>
+
             <p class="section-description">
                 Tell your AI what kind of content you want to create.
             </p>
 
+
             <div class="form-grid">
 
-                <div class="field">
-                    <label>Brand Name</label>
-                    <input id="brandName"
-                           type="text"
-                           placeholder="EXORA">
-                </div>
+
+                <!-- BRAND -->
 
                 <div class="field">
-                    <label>Niche</label>
+
+                    <label for="brandName">
+                        Brand Name
+                    </label>
+
+                    <input
+                        id="brandName"
+                        type="text"
+                        placeholder="EXORA"
+                    >
+
+                </div>
+
+
+                <!-- NICHE -->
+
+                <div class="field">
+
+                    <label for="niche">
+                        Niche
+                    </label>
+
+                    <input
+                        id="niche"
+                        type="text"
+                        placeholder="Men's fashion"
+                    >
+
+                </div>
+
+
+                <!-- AUDIENCE -->
+
+                <div class="field">
+
+                    <label for="audience">
+                        Target Audience
+                    </label>
+
+                    <input
+                        id="audience"
+                        type="text"
+                        placeholder="Men aged 18–35 in Bangladesh"
+                    >
+
+                </div>
+
+
+                <!-- PLATFORM -->
+
+                <div class="field">
+
+                    <label for="platform">
+                        Primary Platform
+                    </label>
+
+                    <select id="platform">
+
+                        <option>
+                            Instagram Reels
+                        </option>
+
+                        <option>
+                            Facebook Reels
+                        </option>
+
+                        <option>
+                            TikTok
+                        </option>
+
+                        <option>
+                            All Platforms
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STYLE -->
+
+                <div class="field full">
+
+                    <label for="style">
+                        Brand Style
+                    </label>
+
+                    <textarea
+                        id="style"
+                        placeholder="Example: premium, cinematic, modern, streetwear, realistic"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- LANGUAGE -->
+
+                <div class="field">
+
+                    <label for="language">
+                        Content Language
+                    </label>
+
+                    <select id="language">
+
+                        <option>
+                            English
+                        </option>
+
+                        <option>
+                            Bangla
+                        </option>
+
+                        <option>
+                            Bangla + English
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DURATION -->
+
+                <div class="field">
+
+                    <label for="duration">
+                        Video Length
+                    </label>
+
+                    <select id="duration">
+
+                        <option>
+                            10–15 seconds
+                        </option>
+
+                        <option>
+                            15–30 seconds
+                        </option>
+
+                        <option>
+                            30–60 seconds
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- GENERATE BUTTON -->
+
+            <button
+                id="generateBtn"
+                class="generate-btn"
+                type="button"
+            >
+
+                <span>
+                    Generate Content Strategy
+                </span>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+        <!-- AI RESULT -->
+
+        <section
+            id="result"
+            class="result hidden"
+        >
+
+            <div class="result-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        AI OUTPUT
+                    </p>
+
+                    <h2>
+                        Your Content Strategy
+                    </h                    <label>Niche</label>
                     <input id="niche"
                            type="text"
                            placeholder="Men's fashion">
