@@ -24,7 +24,7 @@ generateBtn.addEventListener("click", async () => {
     `;
 
     try {
-        const response = await fetch("http://localhost:3000/api/strategy", {
+        const response = await fetch("https://ai-content-studio-f008.onrender.com/api/strategy", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
