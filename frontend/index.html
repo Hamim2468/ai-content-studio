@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +10,659 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-    <header class="topbar">
 
-        <div class="logo">
-            AI CONTENT STUDIO
+<header class="topbar">
+
+    <div class="logo">
+        AI CONTENT STUDIO
+    </div>
+
+    <div class="status">
+        <span class="dot"></span>
+        Prototype
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            YOUR AI CREATIVE ENGINE
+        </p>
+
+        <h1>
+            Create content<br>
+            <span>that actually performs.</span>
+        </h1>
+
+        <p class="description">
+            Give the AI your niche, audience and brand.
+            It will help develop trends, ideas, hooks, stories,
+            editing strategies and captions.
+        </p>
+
+    </section>
+
+
+
+    <!-- BRAND SETUP -->
+
+    <section class="card">
+
+        <h2>
+            Brand Setup
+        </h2>
+
+        <p class="section-description">
+            Tell your AI what kind of content you want to create.
+        </p>
+
+
+        <div class="form-grid">
+
+
+            <div class="field">
+
+                <label for="brandName">
+                    Brand Name
+                </label>
+
+                <input
+                    id="brandName"
+                    type="text"
+                    placeholder="EXORA"
+                >
+
+            </div>
+
+
+
+            <div class="field">
+
+                <label for="niche">
+                    Niche
+                </label>
+
+                <input
+                    id="niche"
+                    type="text"
+                    placeholder="Men's fashion"
+                >
+
+            </div>
+
+
+
+            <div class="field">
+
+                <label for="audience">
+                    Target Audience
+                </label>
+
+                <input
+                    id="audience"
+                    type="text"
+                    placeholder="Men aged 18–35 in Bangladesh"
+                >
+
+            </div>
+
+
+
+            <div class="field">
+
+                <label for="platform">
+                    Primary Platform
+                </label>
+
+                <select id="platform">
+
+                    <option>Instagram Reels</option>
+
+                    <option>Facebook Reels</option>
+
+                    <option>TikTok</option>
+
+                    <option>All Platforms</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="field full">
+
+                <label for="style">
+                    Brand Style
+                </label>
+
+                <textarea
+                    id="style"
+                    placeholder="Example: premium, cinematic, modern, streetwear, realistic"
+                ></textarea>
+
+            </div>
+
+
+
+            <div class="field">
+
+                <label for="language">
+                    Content Language
+                </label>
+
+                <select id="language">
+
+                    <option>English</option>
+
+                    <option>Bangla</option>
+
+                    <option>Bangla + English</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="field">
+
+                <label for="duration">
+                    Video Length
+                </label>
+
+                <select id="duration">
+
+                    <option>10–15 seconds</option>
+
+                    <option>15–30 seconds</option>
+
+                    <option>30–60 seconds</option>
+
+                </select>
+
+            </div>
+
+
         </div>
 
-        <div class="status">
-            <span class="dot"></span>
-            Prototype
+
+
+        <!-- BUTTON -->
+
+        <button
+            id="generateBtn"
+            class="generate-btn"
+            type="button"
+        >
+
+            <span id="buttonText">
+                Generate Content Strategy
+            </span>
+
+            <span id="buttonArrow">
+                →
+            </span>
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- RESULT -->
+
+    <section
+        id="result"
+        class="result hidden"
+    >
+
+        <div class="result-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    AI OUTPUT
+                </p>
+
+                <h2>
+                    Your Content Strategy
+                </h2>
+
+            </div>
+
+            <span class="ai-badge">
+                AI
+            </span>
+
         </div>
 
-    </header>
+
+        <div id="resultContent"></div>
+
+    </section>
 
 
-    <main class="container">
+</main>
 
-        <!-- HERO -->
 
-        <section class="hero">
 
-            <p class="eyebrow">
-                YOUR AI CREATIVE ENGINE
-            </p>
+<footer>
+    AI Content Studio — Prototype V0.1
+</footer>
 
+
+
+<!-- =====================================================
+     LIVE AI ENGINE
+     JavaScript is intentionally inside this HTML file.
+     This removes app.js loading/cache problems.
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    const generateBtn = document.getElementById("generateBtn");
+
+    const buttonText = document.getElementById("buttonText");
+
+    const buttonArrow = document.getElementById("buttonArrow");
+
+    const result = document.getElementById("result");
+
+    const resultContent = document.getElementById("resultContent");
+
+
+    console.log("AI Content Studio JavaScript loaded.");
+
+
+
+    generateBtn.addEventListener("click", async function () {
+
+
+        console.log("Generate button clicked.");
+
+
+        const data = {
+
+            brandName:
+                document.getElementById("brandName").value.trim(),
+
+            niche:
+                document.getElementById("niche").value.trim(),
+
+            audience:
+                document.getElementById("audience").value.trim(),
+
+            platform:
+                document.getElementById("platform").value,
+
+            style:
+                document.getElementById("style").value.trim(),
+
+            language:
+                document.getElementById("language").value,
+
+            duration:
+                document.getElementById("duration").value
+
+        };
+
+
+
+        if (!data.brandName || !data.niche) {
+
+            alert(
+                "Please enter your brand name and niche."
+            );
+
+            return;
+
+        }
+
+
+
+        /* Immediately show that the button works */
+
+        generateBtn.disabled = true;
+
+        buttonText.textContent =
+            "AI IS THINKING...";
+
+        buttonArrow.textContent =
+            "✦";
+
+
+
+        result.classList.remove("hidden");
+
+
+        resultContent.innerHTML = `
+
+            <div class="strategy-box">
+
+                <h3>AI ENGINE</h3>
+
+                <p>
+                    Connecting to the AI Content Studio backend...
+                </p>
+
+            </div>
+
+        `;
+
+
+
+        try {
+
+
+            console.log(
+                "Sending request to backend...",
+                data
+            );
+
+
+            const response = await fetch(
+
+                "https://ai-content-studio-f008.onrender.com/api/strategy",
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+
+            );
+
+
+
+            console.log(
+                "Backend response:",
+                response.status
+            );
+
+
+
+            const responseText =
+                await response.text();
+
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    responseText ||
+                    "Backend request failed."
+                );
+
+            }
+
+
+
+            let strategy;
+
+
+            try {
+
+                strategy =
+                    JSON.parse(responseText);
+
+            } catch (error) {
+
+                throw new Error(
+                    "The AI returned an invalid response."
+                );
+
+            }
+
+
+
+            resultContent.innerHTML = `
+
+                <div class="strategy-grid">
+
+
+                    <div class="strategy-box">
+
+                        <h3>BRAND</h3>
+
+                        <p>
+                            ${strategy.brand || data.brandName}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>NICHE</h3>
+
+                        <p>
+                            ${strategy.niche || data.niche}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>TARGET AUDIENCE</h3>
+
+                        <p>
+                            ${strategy.audience || data.audience}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>PLATFORM</h3>
+
+                        <p>
+                            ${strategy.platform || data.platform}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>CONTENT PILLARS</h3>
+
+                        <p>
+                            ${(strategy.contentPillars || [])
+                            .join("<br>")}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>HOOK STRATEGY</h3>
+
+                        <p>
+                            ${strategy.hookStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>VIDEO IDEAS</h3>
+
+                        <p>
+                            ${(strategy.videoIdeas || [])
+                            .join("<br><br>")}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>EDITING STRATEGY</h3>
+
+                        <p>
+                            ${strategy.editingStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>MUSIC STRATEGY</h3>
+
+                        <p>
+                            ${strategy.musicStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>CAPTION STRATEGY</h3>
+
+                        <p>
+                            ${strategy.captionStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>HASHTAG STRATEGY</h3>
+
+                        <p>
+                            ${strategy.hashtagStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>POSTING STRATEGY</h3>
+
+                        <p>
+                            ${strategy.postingStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                    <div class="strategy-box">
+
+                        <h3>TESTING STRATEGY</h3>
+
+                        <p>
+                            ${strategy.testingStrategy || ""}
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+
+            result.scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+        } catch (error) {
+
+
+            console.error(
+                "AI ENGINE ERROR:",
+                error
+            );
+
+
+            result.classList.remove("hidden");
+
+
+            resultContent.innerHTML = `
+
+                <div class="strategy-box">
+
+                    <h3>AI ENGINE ERROR</h3>
+
+                    <p>
+                        ${error.message}
+                    </p>
+
+                    <br>
+
+                    <p>
+                        The frontend is working,
+                        but the backend request failed.
+                    </p>
+
+                </div>
+
+            `;
+
+
+        } finally {
+
+
+            generateBtn.disabled = false;
+
+
+            buttonText.textContent =
+                "Generate Content Strategy";
+
+
+            buttonArrow.textContent =
+                "→";
+
+
+        }
+
+
+    });
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>
             <h1>
                 Create content<br>
                 <span>that actually performs.</span>
